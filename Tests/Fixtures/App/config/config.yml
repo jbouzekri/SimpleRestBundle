@@ -1,0 +1,30 @@
+# Basic config common to all functional tests
+# Can be easily overridden in each test config
+parameters:
+  locale: en
+
+framework:
+  secret:          secret
+  translator:      false
+  default_locale:  '%locale%'
+  test:            ~
+  router:          { resource: '%kernel.root_dir%/config/routing.yml' }
+  form:            false
+  validation:      false
+  profiler:
+    collect: false
+  session:
+    storage_id: session.storage.mock_file
+
+security:
+  firewalls:
+    main:
+      pattern: ^/
+      anonymous: true
+  providers:
+    in_memory:
+      memory: ~
+
+services:
+  logger:
+    class: Psr\Log\NullLogger

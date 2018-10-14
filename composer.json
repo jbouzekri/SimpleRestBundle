@@ -1,0 +1,32 @@
+{
+  "name": "jbouzekri/simple-rest-bundle",
+  "type": "symfony-bundle",
+  "description": "A simple bundle with the minimum to create HTTP Rest API on Symfony",
+  "keywords": ["phumbor", "thumbor", "Bundle", "Helper", "Twig", "Symfony"],
+  "homepage": "https://github.com/jbouzekri/SimpleRestBundle",
+  "license": "MIT",
+  "require": {
+    "symfony/http-kernel": "~3.4|~4.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.*",
+    "symfony/browser-kit": "~3.4|~4.0",
+    "symfony/dependency-injection": "~3.4|~4.0",
+    "symfony/framework-bundle": "~3.4|~4.0",
+    "symfony/security-bundle": "~3.4|~4.0",
+    "symfony/yaml": "~3.4|~4.0",
+    "phpunit/phpunit": "~7.0",
+    "sensio/framework-extra-bundle": "^5.2"
+  },
+  "autoload": {
+    "psr-4": { "Jb\\Bundle\\SimpleRestBundle\\": "" },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AppTestBundle\\": "Tests/Fixtures/AppTestBundle/"
+    }
+  }
+}

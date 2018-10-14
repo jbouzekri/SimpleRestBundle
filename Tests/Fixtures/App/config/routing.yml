@@ -1,0 +1,4 @@
+jb_simple_rest_test:
+  resource: "@AppTestBundle/Controller/"
+  type:     annotation
+  prefix:   /
