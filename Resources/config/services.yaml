@@ -7,3 +7,10 @@ services:
   Jb\Bundle\SimpleRestBundle\EventListener\JsonControllerListener:
     tags:
       - { name: kernel.event_listener, event: kernel.controller }
+
+  Jb\Bundle\SimpleRestBundle\EventListener\ApiExceptionListener:
+    arguments:
+      - "@logger"
+      - "@serializer"
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception }
