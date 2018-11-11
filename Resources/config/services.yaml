@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autowire: false
+    autoconfigure: false
+    public: false
+
+  Jb\Bundle\SimpleRestBundle\EventListener\JsonControllerListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.controller }
