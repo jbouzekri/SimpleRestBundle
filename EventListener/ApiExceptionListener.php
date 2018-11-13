@@ -9,6 +9,7 @@
 
 namespace Jb\Bundle\SimpleRestBundle\EventListener;
 
+use Jb\Bundle\SimpleRestBundle\Exception\ConstraintViolationListHttpException;
 use Jb\Bundle\SimpleRestBundle\Model\ApiError;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,11 +19,14 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
+ * Class ApiExceptionListener
+ *
+ * @package Jb\Bundle\SimpleRestBundle\EventListener
+ *
  * Handle Kernel exceptions by returning a proper API response
  */
 class ApiExceptionListener
 {
-
     /**
      * @var LoggerInterface
      */
@@ -55,17 +59,22 @@ class ApiExceptionListener
         $error = new ApiError();
 
         switch (true) {
+            case $exception instanceof ConstraintViolationListHttpException:
+                $error->setErrors($exception->getErrors());
+                $error->setMessage($exception->getMessage());
+                $error->setCode($exception->getStatusCode());
+                break;
+
             case $exception instanceof HttpException:
                 $error->setMessage($exception->getMessage());
                 $error->setCode($exception->getStatusCode());
                 break;
 
             default:
-                $error->setMessage('The application has encountered an unhandled error.');
+                $error->setMessage('The application has encountered an unhandled error');
                 $error->setCode(Response::HTTP_INTERNAL_SERVER_ERROR);
                 break;
         }
-
 
         $errorData = $this->normalizer->normalize($error);
 

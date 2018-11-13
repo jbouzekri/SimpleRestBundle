@@ -16,12 +16,17 @@ class ApiError
     /**
      * @var string
      */
-    private $message;
+    protected $message;
 
     /**
      * @var int
      */
-    private $code;
+    protected $code;
+
+    /**
+     * @var array
+     */
+    protected $errors = [];
 
     /**
      * @return string|null
@@ -40,9 +45,9 @@ class ApiError
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getCode(): ?int
+    public function getCode(): int
     {
         return $this->code;
     }
@@ -53,5 +58,21 @@ class ApiError
     public function setCode(int $code = null)
     {
         $this->code = $code;
+    }
+
+    /**
+     * @return array
+     */
+    public function getErrors(): array
+    {
+        return $this->errors;
+    }
+
+    /**
+     * @param array $errors
+     */
+    public function setErrors(array $errors = [])
+    {
+        $this->errors = $errors;
     }
 }
