@@ -17,4 +17,5 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class JbSimpleRestBundle extends Bundle
 {
+    const ZONE_ATTRIBUTE = '_jb_simple_rest_zone';
 }

@@ -10,6 +10,7 @@
 namespace Jb\Bundle\SimpleRestBundle\EventListener;
 
 use Jb\Bundle\SimpleRestBundle\Exception\ConstraintViolationListHttpException;
+use Jb\Bundle\SimpleRestBundle\JbSimpleRestBundle;
 use Jb\Bundle\SimpleRestBundle\Model\ApiError;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -54,6 +55,11 @@ class ApiExceptionListener
      */
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
+        // Not in this bundle zone, fallback default exception listener
+        if (!$event->getRequest()->attributes->get(JbSimpleRestBundle::ZONE_ATTRIBUTE, false)) {
+            return;
+        }
+
         $exception = $event->getException();
 
         $error = new ApiError();

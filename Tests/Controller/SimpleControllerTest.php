@@ -19,12 +19,6 @@ use Jb\Bundle\SimpleRestBundle\Tests\Fixtures\AbstractTestCase;
  */
 class SimpleControllerTest extends AbstractTestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-        //$this->initClient(['environment' => 'action_override']);
-    }
-
     public function testInit()
     {
         $this->client->request('GET', '/simple');

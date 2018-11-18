@@ -17,6 +17,7 @@ use function json_last_error;
 use function json_last_error_msg;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Jb\Bundle\SimpleRestBundle\JbSimpleRestBundle;
 
 /**
  * class JsonControllerListener
@@ -28,7 +29,14 @@ class JsonControllerListener
 {
     public function onKernelController(FilterControllerEvent $event)
     {
+
         $request = $event->getRequest();
+
+        // Not in this bundle zone, fallback default exception listener
+        if (!$request->attributes->get(JbSimpleRestBundle::ZONE_ATTRIBUTE, false)) {
+            return;
+        }
+
         if ($request->getContentType() != 'json' || !$request->getContent()) {
             return;
         }

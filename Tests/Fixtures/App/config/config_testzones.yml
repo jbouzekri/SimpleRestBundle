@@ -1,0 +1,6 @@
+imports:
+  - { resource: config.yml }
+
+jb_simple_rest:
+  zones:
+    - '^/inzone'
