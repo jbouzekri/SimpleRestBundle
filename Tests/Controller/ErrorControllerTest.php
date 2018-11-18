@@ -26,7 +26,7 @@ class ErrorControllerTest extends AbstractTestCase
             '/error',
             [],
             [],
-            ['CONTENT_TYPE' => 'application/json'],
+            ['CONTENT_TYPE' => 'application/json', 'HTTP_ACCEPT' => 'application/json'],
             '{"key": "value"'
         );
 
@@ -45,7 +45,10 @@ class ErrorControllerTest extends AbstractTestCase
     {
         $this->client->request(
             'POST',
-            '/error/500'
+            '/error/500',
+            [],
+            [],
+            ['HTTP_ACCEPT' => 'application/json']
         );
 
         $this->assertEquals(
@@ -70,7 +73,7 @@ class ErrorControllerTest extends AbstractTestCase
             '/error/400',
             [],
             [],
-            ['CONTENT_TYPE' => 'application/json'],
+            ['CONTENT_TYPE' => 'application/json', 'HTTP_ACCEPT' => 'application/json'],
             json_encode([
                 "key2" => "not_an_email",
                 "embed1" => [
@@ -127,7 +130,7 @@ class ErrorControllerTest extends AbstractTestCase
             '/error/400',
             [],
             [],
-            ['CONTENT_TYPE' => 'application/json'],
+            ['CONTENT_TYPE' => 'application/json', 'HTTP_ACCEPT' => 'application/json'],
             json_encode([
                 "key1" => "not_blank",
                 "key2" => "test@gmail.com",

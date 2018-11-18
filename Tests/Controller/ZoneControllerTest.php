@@ -29,7 +29,7 @@ class ZoneControllerTest extends AbstractTestCase
             '/inzone',
             [],
             [],
-            ['CONTENT_TYPE' => 'application/json'],
+            ['CONTENT_TYPE' => 'application/json', 'HTTP_ACCEPT' => 'application/json'],
             json_encode([])
         );
 
@@ -57,7 +57,7 @@ class ZoneControllerTest extends AbstractTestCase
             '/inzone',
             [],
             [],
-            ['CONTENT_TYPE' => 'application/json'],
+            ['CONTENT_TYPE' => 'application/json', 'HTTP_ACCEPT' => 'application/json'],
             json_encode(['key1' => 'as a value'])
         );
 

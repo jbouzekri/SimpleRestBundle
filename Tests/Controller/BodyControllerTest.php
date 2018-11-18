@@ -23,7 +23,10 @@ class BodyControllerTest extends AbstractTestCase
     {
         $this->client->request(
             'POST',
-            '/body/is-json'
+            '/body/is-json',
+            [],
+            [],
+            ['HTTP_ACCEPT' => 'application/json']
         );
 
         $this->assertEquals(
@@ -44,7 +47,7 @@ class BodyControllerTest extends AbstractTestCase
             '/body/is-json',
             [],
             [],
-            ['CONTENT_TYPE' => 'text/xml'],
+            ['CONTENT_TYPE' => 'text/xml', 'HTTP_ACCEPT' => 'application/json'],
             '<simple-xml-string>A simple XML string</simple-xml-string>'
         );
 
@@ -66,7 +69,7 @@ class BodyControllerTest extends AbstractTestCase
             '/body/is-json',
             [],
             [],
-            ['CONTENT_TYPE' => 'application/json'],
+            ['CONTENT_TYPE' => 'application/json', 'HTTP_ACCEPT' => 'application/json'],
             '{"key": "value"}'
         );
 
