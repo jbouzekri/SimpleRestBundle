@@ -23,5 +23,9 @@ services:
     tags:
     - { name: kernel.event_listener, event: kernel.request, priority: 228 }
 
+  Jb\Bundle\SimpleRestBundle\EventListener\JsonViewListener:
+    tags:
+    - { name: kernel.event_listener, event: kernel.view }
+
   jb_simple_rest.zone_request_matcher:
     class: Symfony\Component\HttpFoundation\RequestMatcher
