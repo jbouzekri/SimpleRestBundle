@@ -29,6 +29,7 @@ class AppKernel extends Kernel
         return [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Jb\Bundle\SimpleRestBundle\JbSimpleRestBundle(),
             new Jb\Bundle\SimpleRestBundle\Tests\Fixtures\AppTestBundle\AppTestBundle(),
         ];

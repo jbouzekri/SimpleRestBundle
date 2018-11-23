@@ -21,11 +21,13 @@ services:
 
   Jb\Bundle\SimpleRestBundle\EventListener\AcceptHeaderListener:
     tags:
-    - { name: kernel.event_listener, event: kernel.request, priority: 228 }
+      - { name: kernel.event_listener, event: kernel.request, priority: 228 }
 
   Jb\Bundle\SimpleRestBundle\EventListener\JsonViewListener:
+    arguments:
+      - "@serializer"
     tags:
-    - { name: kernel.event_listener, event: kernel.view }
+      - { name: kernel.event_listener, event: kernel.view }
 
   jb_simple_rest.zone_request_matcher:
     class: Symfony\Component\HttpFoundation\RequestMatcher
